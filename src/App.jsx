@@ -9,7 +9,7 @@ container.render(<App />);
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <SearchParams />
     </div>
   );

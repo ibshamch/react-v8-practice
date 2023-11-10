@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
+import Result from "./Results";
 const ANIMALS = ["birds", "cat", "dog", "rabbit", "reptile"];
 const SearchParams = () => {
   const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
-  const breeds = [];
   const [pets, setPets] = useState([]);
+  const [breeds] = useBreedList(animal);
   // UseEffect : Outside of lifecycle of component, Async,localStorage etc go do this,go get that
   useEffect(() => {
     requestPets();
   }, []);
   async function requestPets() {
     const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`,
+      `https://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`,
     );
     const json = await res.json();
 
@@ -72,16 +74,7 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
-      {pets.map((pet) => {
-        return (
-          <Pet
-            name={pet.name}
-            animal={pet.animal}
-            breed={pet.breed}
-            key={pet.id}
-          />
-        );
-      })}
+      <Result pets={pets} />
     </div>
   );
 };
