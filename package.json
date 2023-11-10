@@ -1,0 +1,24 @@
+{
+  "devDependencies": {
+    "eslint": "^8.53.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.0.3",
+    "vite": "^4.5.0"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.8.1",
+    "@vitejs/plugin-react": "^4.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "yarn": "^1.22.19"
+  },
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
